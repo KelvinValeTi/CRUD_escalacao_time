@@ -104,26 +104,34 @@ function escalarJogador(){
     
     let posicaoEscolhida = posicao.options[posicao.selectedIndex].text;
 
-    let jogador = new Jogador(numCamisa.value, inputNomeJogador.value, posicaoEscolhida);
-
+    //validar numero da camisa
+    let camisaValida = validaCamisa(numCamisa.value);
+    const erroNumeroCamisa = document.getElementById("erro-numero-camisa");
+    erroNumeroCamisa.textContent="Já existe um jogador escalado com este número"
+    
+    if(!camisaValida){
+        erroNumeroCamisa.classList.remove("hide");
+    }else{
+        erroNumeroCamisa.classList.add("hide");
+    }
+    
     //validar nome
     let nomeValido = validarPalavra(inputNomeJogador.value);
     const erroNomeJogador = document.getElementById("erro-nome-jogador");
     erroNomeJogador.textContent = "Digite um nome válido";
 
-    if(nomeValido){
+    if(!nomeValido){
+        erroNomeJogador.classList.remove("hide");
+    }else{
+        erroNomeJogador.classList.add("hide");
+    }
+
+    //se nome e camisa estiverem corretos, atualizar a tabela
+    if(nomeValido && camisaValida){
+        let jogador = new Jogador(numCamisa.value, inputNomeJogador.value, posicaoEscolhida);
         escalacao.push(jogador);
         incluirApenasUmJogador();
-        erroNomeJogador.classList.add("hide");
-
-    }else{
-        erroNomeJogador.classList.remove("hide");
     }
-    
-
-    
-    //console.log(escalacao[escalacao.length -1])
-
 }
 
 //função que inclui apenas um jogador no fim da tabela
@@ -179,6 +187,18 @@ function validarPalavra(palavra){
         //tudo certo
         return true;
     }
+}
+
+function validaCamisa(numCamisa){
+    let camisa = numCamisa;
+    let result = true;
+
+    for(let i=0;i<escalacao.length;i++){
+        if(escalacao[i].camisa==camisa){
+            result=false;
+        }
+    }
+    return result;
 }
 
 /**
