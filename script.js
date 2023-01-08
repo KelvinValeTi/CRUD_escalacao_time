@@ -7,9 +7,6 @@ const btnApagarTodos = document.getElementById("apagar-todos");
 const btnAlterarNomeTime = document.getElementById("btn-alterar-nome-time");
 const btnEscalarJogador = document.getElementById("escalar-jogador");
 
-//inputs
-
-
 //a escalação já inicia com alguns nomes.
 let escalacao = [
     new Jogador(1, "Allisson", "Goleiro"),
@@ -83,9 +80,23 @@ function alteraTituloTabela(){
     const inputNomeTime = document.getElementById("input-nome-time");
 
     //mandar validar este antes
-    titleTable.innerText = inputNomeTime.value;
+    let nomeValido = validarPalavra(inputNomeTime.value);
+    const erroNomeTime = document.getElementById("erro-nome-time");
+    erroNomeTime.textContent = "Digite um nome válido";
+
+    if(nomeValido){
+        titleTable.innerText = inputNomeTime.value;    
+        erroNomeTime.classList.add("hide");
+
+    }else{
+        erroNomeTime.classList.remove("hide");
+    }
+    
+
+    
 }
 
+//função que escala o jogador
 function escalarJogador(){
     const inputNomeJogador = document.getElementById("input-nome-jogador");
     const posicao = document.getElementById("posicao");
@@ -95,18 +106,27 @@ function escalarJogador(){
 
     let jogador = new Jogador(numCamisa.value, inputNomeJogador.value, posicaoEscolhida);
 
-    /*console.log(numCamisa.value);
-    console.log(inputNomeJogador.value); //nome jogador
-    console.log(posicaoEscolhida); //posicao
-*/
-    escalacao.push(jogador);
-    console.log(escalacao[escalacao.length -1])
-    incluirApenasUmJogador();
+    //validar nome
+    let nomeValido = validarPalavra(inputNomeJogador.value);
+    const erroNomeJogador = document.getElementById("erro-nome-jogador");
+    erroNomeJogador.textContent = "Digite um nome válido";
 
-    console.table(escalacao);
-    //gerarTabelaEscalacao();
+    if(nomeValido){
+        escalacao.push(jogador);
+        incluirApenasUmJogador();
+        erroNomeJogador.classList.add("hide");
+
+    }else{
+        erroNomeJogador.classList.remove("hide");
+    }
+    
+
+    
+    //console.log(escalacao[escalacao.length -1])
+
 }
 
+//função que inclui apenas um jogador no fim da tabela
 function incluirApenasUmJogador(){
     const table = document.getElementById("table");
     const tableTr = document.createElement("tr");
@@ -138,6 +158,27 @@ function incluirApenasUmJogador(){
     iTagDelete.classList.add("fa-trash");
     deleteIcon.appendChild(iTagDelete);
     tableTr.appendChild(deleteIcon);
+}
+
+/**
+ * FUNÇÕES DE VALIDAÇÃO
+ */
+
+function validarPalavra(palavra){
+        
+    let palavraValor = palavra;
+    var padrao = /[^a-zà-ú\.\s]/gi;
+    
+    let valida_palavra = palavraValor.match(padrao);
+
+    //validar nome e sobrenome
+    if(valida_palavra || !palavraValor ){
+        //houve erro
+        return false;
+    }else{
+        //tudo certo
+        return true;
+    }
 }
 
 /**
