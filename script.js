@@ -54,6 +54,9 @@ function gerarTabelaEscalacao(){
         editarIcon.appendChild(iTagEdit);
         tableTr.appendChild(editarIcon);
 
+        //adicionando evento de click na tag html
+        iTagEdit.setAttribute("onclick","editarJogador("+i+")");
+
         const deleteIcon = document.createElement("td");
         const iTagDelete = document.createElement("i");
         iTagDelete.classList.add("fa");
@@ -160,6 +163,10 @@ function incluirApenasUmJogador(){
     editarIcon.appendChild(iTagEdit);
     tableTr.appendChild(editarIcon);
 
+    //adicionando evento de click na tag html
+    iTagEdit.setAttribute("onclick","editarJogador("+i+")");
+
+
     const deleteIcon = document.createElement("td");
     const iTagDelete = document.createElement("i");
     iTagDelete.classList.add("fa");
@@ -201,6 +208,12 @@ function validaCamisa(numCamisa){
     return result;
 }
 
+function editarJogador(index){
+    //recebe a posição do jogador no vetor
+    console.log("editar");
+    console.log("index: "+index);
+}
+
 /**
  * EVENTOS
  */
@@ -218,6 +231,14 @@ btnAlterarNomeTime.addEventListener("click",()=>{
 btnEscalarJogador.addEventListener("click",()=>{
     escalarJogador();
 });
+
+/*const btnEditar = document.getElementsByClassName("fa-pencil");
+for(let i=0; i<btnEditar.length;i++){
+    console.log(btnEditar[i]);
+}*/
+
+
+
 
 
 
