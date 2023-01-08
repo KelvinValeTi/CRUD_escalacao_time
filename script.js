@@ -2,6 +2,8 @@
  * Variaveis
  */
 
+const btnApagarTodos = document.getElementById("apagar-todos");
+
 //a escalação já inicia com alguns nomes.
 let escalacao = [
     new Jogador(1, "Allisson", "Goleiro"),
@@ -27,6 +29,7 @@ function gerarTabelaEscalacao(){
     for(let i=0;i<escalacao.length;i++){
         const table = document.getElementById("table");
         const tableTr = document.createElement("tr");
+        tableTr.classList.add("tr-control");
         table.appendChild(tableTr);
 
         const tdCamisa = document.createElement("td");
@@ -57,6 +60,18 @@ function gerarTabelaEscalacao(){
     }
 }
 
+function apagarTodos(){
+    const linha = document.querySelectorAll(".tr-control");
+    const table = document.getElementById("table");
+
+    for(let i=0;i<escalacao.length;i++){
+        table.removeChild(linha[i]);
+    }
+
+    escalacao=[];
+    gerarTabelaEscalacao();
+}
+
 
 
 
@@ -65,3 +80,8 @@ function gerarTabelaEscalacao(){
  */
 
 window.onload = gerarTabelaEscalacao();
+
+btnApagarTodos.addEventListener("click",()=>{
+    apagarTodos();
+});
+
