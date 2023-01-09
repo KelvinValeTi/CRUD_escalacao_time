@@ -47,22 +47,16 @@ function gerarTabelaEscalacao(){
         tdPosicao.innerText=escalacao[i].posicao;
         tableTr.appendChild(tdPosicao);
 
-        const editarIcon = document.createElement("td");
-        const iTagEdit = document.createElement("i");
-        iTagEdit.classList.add("fa");
-        iTagEdit.classList.add("fa-pencil");
-        editarIcon.appendChild(iTagEdit);
-        tableTr.appendChild(editarIcon);
-
-        //adicionando evento de click na tag html
-        iTagEdit.setAttribute("onclick","editarJogador("+i+")");
-
         const deleteIcon = document.createElement("td");
         const iTagDelete = document.createElement("i");
         iTagDelete.classList.add("fa");
         iTagDelete.classList.add("fa-trash");
         deleteIcon.appendChild(iTagDelete);
         tableTr.appendChild(deleteIcon);
+
+        //adicionando evento de click na tag html
+        iTagDelete.setAttribute("onclick","deleteJogador("+i+")");
+
     }
 }
 
@@ -156,23 +150,34 @@ function incluirApenasUmJogador(){
     tdPosicao.innerText=escalacao[escalacao.length -1].posicao;
     tableTr.appendChild(tdPosicao);
 
-    const editarIcon = document.createElement("td");
-    const iTagEdit = document.createElement("i");
-    iTagEdit.classList.add("fa");
-    iTagEdit.classList.add("fa-pencil");
-    editarIcon.appendChild(iTagEdit);
-    tableTr.appendChild(editarIcon);
-
-    //adicionando evento de click na tag html
-    iTagEdit.setAttribute("onclick","editarJogador("+i+")");
-
-
     const deleteIcon = document.createElement("td");
     const iTagDelete = document.createElement("i");
     iTagDelete.classList.add("fa");
     iTagDelete.classList.add("fa-trash");
     deleteIcon.appendChild(iTagDelete);
     tableTr.appendChild(deleteIcon);
+
+    //index deste elemento depois de criado
+    let i = escalacao.length-1;
+    
+    //adicionando evento de click na tag html
+    iTagDelete.setAttribute("onclick","deleteJogador("+i+")");
+
+}
+
+
+function deleteJogador(index){
+    //recebe a posição do jogador no vetor
+    const linha = document.querySelectorAll(".tr-control");
+    const table = document.getElementById("table");
+
+    for(let i=0;i<escalacao.length;i++){
+        table.removeChild(linha[i]);
+    }
+    
+    escalacao.splice(index,1);
+
+    gerarTabelaEscalacao();
 }
 
 /**
@@ -208,12 +213,6 @@ function validaCamisa(numCamisa){
     return result;
 }
 
-function editarJogador(index){
-    //recebe a posição do jogador no vetor
-    console.log("editar");
-    console.log("index: "+index);
-}
-
 /**
  * EVENTOS
  */
@@ -232,10 +231,6 @@ btnEscalarJogador.addEventListener("click",()=>{
     escalarJogador();
 });
 
-/*const btnEditar = document.getElementsByClassName("fa-pencil");
-for(let i=0; i<btnEditar.length;i++){
-    console.log(btnEditar[i]);
-}*/
 
 
 
