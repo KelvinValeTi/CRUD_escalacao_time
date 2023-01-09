@@ -7,6 +7,168 @@
 
 }
 
+body{
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    margin-left:10vw;
+    margin-top:10vh;
+    
+    width: 80vw;
+
+    border:1px solid #ccc;
+}
+
+#form-title{
+    font-size:2rem;
+}
+
+form{
+    display:flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+
+    width:80vw;
+    
+    border: 1px solid #ccc;
+    font-size:1.7rem;
+}
+
+/*Alterar nome do time*/
+#div-nome-time{
+    display:flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+
+    width:80vw;
+
+    padding: 1vh 3vw 1vh 3vw;
+}
+
+#input-nome-time{
+    width: 50vw;
+    height:5vh;
+    align-items: center;
+}
+
+#div-nome-time button{
+    width:10vw;
+    height:5vh;
+    font-size: 0.8rem;
+    font-weight: bold;
+}
+
+/*Nome do jogador*/
+#div-nome-jogador{
+    display:flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+
+    border-top:1px solid #ccc;
+    width:80vw;
+    
+    padding: 1vh 3vw 1vh 3vw;
+}
+
+#input-nome-jogador{
+    width:50vw;
+    height:5vh;
+}
+
+/*posição do jogador e numero de camisa*/
+#div-posicao-numero-camisa{
+    display:flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+
+    width:80vw;
+
+    padding: 1vh 3vw 1vh 3vw;
+}
+
+#div-posicao, #div-numero-camisa{
+    display:flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+
+    margin-left: 1vw;
+    margin-right: 1vw;
+    
+}
+
+#posicao{
+    width:15vw;
+    height:5vh;
+}
+
+#div-numero-camisa input{
+    width:3vw;
+    height:5vh;
+}
+
+/*botoes*/
+#div-botoes-apagar-escalar{
+    display:flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+
+    width:80vw;
+
+    padding: 1vh 5vw 1vh 5vw;
+}
+
+#div-botoes-apagar-escalar button{
+    width:30vw;
+    height:8vh;
+    font-size: 1rem;
+    font-weight: bold;
+}
+
+/*===========
+TABELA
+=============*/
+table{
+    margin-top:1vh;
+    padding: 1vh 5vw 1vh 5vw;
+    border:1px solid black;
+    width:70vw;
+
+    text-align:center;
+}
+
+#tr-cabecalho{
+    background-color:#ccc;
+}
+#th-camisa, #th-excluir{
+    width:3vw;
+}
+
+table td{
+    border:1px solid #ccc;
+}
+
+
+
+
+
+
+
+
+/*hide e span*/
+span{
+    color:red;
+    font-size:1.5rem;
+    text-align:center;
+}
 .hide{
     display:none;
 }
+
