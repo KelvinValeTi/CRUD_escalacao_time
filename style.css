@@ -23,6 +23,7 @@ body{
 
 #form-title{
     font-size:2rem;
+    text-align:center;
 }
 
 form{
@@ -53,6 +54,8 @@ form{
     width: 50vw;
     height:5vh;
     align-items: center;
+    margin-left:0.5vw;
+    margin-right: 0.5vw;
 }
 
 #div-nome-time button{
@@ -106,11 +109,14 @@ form{
 #posicao{
     width:15vw;
     height:5vh;
+    margin-left:0.5vw;    
 }
 
 #div-numero-camisa input{
-    width:3vw;
+    width:5vw;
     height:5vh;
+    margin-left:0.5vw;
+    margin-right:0.5vw;
 }
 
 /*botoes*/
@@ -144,6 +150,10 @@ table{
     text-align:center;
 }
 
+#title-table{
+    text-align:center;
+}
+
 #tr-cabecalho{
     background-color:#ccc;
 }
@@ -156,12 +166,6 @@ table td{
 }
 
 
-
-
-
-
-
-
 /*hide e span*/
 span{
     color:red;
@@ -172,3 +176,54 @@ span{
     display:none;
 }
 
+/*responsividade*/
+
+@media (max-width:1040px) and (min-width:831px){
+
+    span{
+        font-size:1.2rem;
+    }
+
+    form{
+        font-size:1.4rem;
+    }
+}
+
+@media (max-width:830px) and (min-width:571px){
+
+    span{
+        font-size:1rem;
+    }
+
+    form{
+        font-size:1.2rem;
+    }
+    
+    #div-numero-camisa input{
+        width:6vw;
+    }
+}
+
+@media (max-width:570px){
+
+    #div-nome-time button{
+        width:14vw;
+    }
+
+    span{
+        font-size:0.8rem;
+    }
+
+    form{
+        font-size:1rem;
+    }
+
+    #posicao{
+        width:19vw;
+    
+    }
+
+    #div-numero-camisa input{
+        width:8vw;
+    }
+}
